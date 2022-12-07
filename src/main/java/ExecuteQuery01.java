@@ -40,11 +40,8 @@ public class ExecuteQuery01 {
         }
 
 
-
-
-
-
-
+        con.close();
+        st.close();
 
 
     }
