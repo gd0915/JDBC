@@ -37,5 +37,8 @@ public class ExecuteQuery02_Review {
             System.out.println(resultSet3.getString(1)+ "--" + resultSet3.getInt(2));
         }
 
+        con.close();
+        st.close();
+
     }
 }
