@@ -11,7 +11,7 @@ public class JdbcUtils {
     public static Connection connectToDatabase(String hostName,String databaseName,String username,String password) {
 
         try {
-            Class.forName("org.postgresql.Driver");
+            Class.forName("org.postgresql.Driver"); //postgresql==> Driver name
         } catch (ClassNotFoundException e) {
             throw new RuntimeException(e);
         }
@@ -110,8 +110,8 @@ public class JdbcUtils {
         StringBuilder values = new StringBuilder("");
 
         for(String w:columnName_Value){
-            columnNames.append(w.split(" ")[0]).append(",");
-            values.append(w.split(" ")[1]).append(",");
+            columnNames.append(w.split(" ")[0]).append(",");// split() method split the column names from each other and append() method put comma at the end
+            values.append(w.split(" ")[1]).append(",");//split() method split the values from each other and append() method put comma at the end
         }
 
         //"INSERT INTO "+tableName+"(id, name, address) VALUES(123, 'john', 'new york')"
@@ -156,6 +156,34 @@ public class JdbcUtils {
 
         }
         return columnData;
+    }
+
+    public static ResultSet executeQuery(String query){
+        ResultSet resultSet;
+
+        try {
+            resultSet = statement.executeQuery(query);
+        } catch (SQLException e) {
+            throw new RuntimeException(e);
+        }
+        System.out.println("Query Executed");
+        return resultSet;
+    }
+
+    public static void printQuery(ResultSet resultSet , String column_name)  {
+
+        while(true) {
+            try {
+                if (!resultSet.next()) break;
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+            try {
+                System.out.println(resultSet.getObject(column_name));
+            } catch (SQLException e) {
+                throw new RuntimeException(e);
+            }
+        }
     }
 
 
