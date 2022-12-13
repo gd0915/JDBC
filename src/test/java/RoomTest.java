@@ -3,6 +3,7 @@ import org.junit.jupiter.api.Test;
 import java.util.List;
 
 
+import static java.util.stream.Collectors.toList;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 
 public class RoomTest {
@@ -35,6 +36,9 @@ public class RoomTest {
         //1st Way: by using lambda
         long num_of_rooms = created_bys.stream().filter(t-> t.equals("john doe")).count();
         System.out.println("num_of_rooms " + num_of_rooms);
+
+        //int num_of_rooms2 = created_bys.stream().filter(t-> t.equals("john doe")).collect(toList()).size();
+        //System.out.println("num_of_rooms " + num_of_rooms2);
 
         assertFalse(num_of_rooms>0);
 

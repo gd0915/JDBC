@@ -109,10 +109,17 @@ public class JdbcUtils {
         StringBuilder columnNames = new StringBuilder("");
         StringBuilder values = new StringBuilder("");
 
-        for(String w:columnName_Value){
-            columnNames.append(w.split(" ")[0]).append(",");// split() method split the column names from each other and append() method put comma at the end
-            values.append(w.split(" ")[1]).append(",");//split() method split the values from each other and append() method put comma at the end
+        for(String w:columnName_Value) {
+            int firstSpace = w.indexOf(" ");
+
+            columnNames.append(w.substring(0, firstSpace)).append(",");  //1
+            values.append(w.substring(firstSpace)).append(",");  //2
         }
+
+//        for(String w:columnName_Value){
+//            columnNames.append(w.split(" ")[0]).append(",");// split() method split the column names from each other and append() method put comma at the end
+//            values.append(w.split(" ")[1]).append(",");//split() method split the values from each other and append() method put comma at the end
+//        }//This creation does not work properly with the values that consists of multiple words
 
         //"INSERT INTO "+tableName+"(id, name, address) VALUES(123, 'john', 'new york')"
         columnNames.deleteCharAt(columnNames.lastIndexOf(","));
