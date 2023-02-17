@@ -40,6 +40,8 @@ public class JdbcUtils {
     }
 
     //4. Step: Execute the query
+    // This method when we use it with DDL(Create, Alter, Delete operations) will return false everytime
+    // When we use it with DQL(Select - read the data) it will return true when we get the data; otherwise it will return false
     public static boolean execute(String query){
         boolean isExecute;
 
@@ -85,7 +87,7 @@ public class JdbcUtils {
     }
 
     //The method to create table
-    //The method to create table
+    //columnName_DataType => This part is an array, so we can use for each loop
     public static void createTable(String tableName,String... columnName_DataType){
         StringBuilder columnName_DataTypeString = new StringBuilder("");
         for(String w:columnName_DataType){

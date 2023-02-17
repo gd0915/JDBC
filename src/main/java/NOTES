@@ -67,7 +67,8 @@ For the first time, cursor is positioned before the first row. We need to use ne
     We can create an object of the CallableStatement (interface) using the prepareCall() method of the Connection interface.
     This method accepts a string variable representing a query to call the stored procedure. It returns a CallableStatement object.
          ==>> "CallableStatement cst1 = con.prepareCall("{? = call additionF(?, ?) }");"
-    We use set() methods to assign values to parameters (setInt()...)
+    We use cst1.registerOutParameter(1,Types.NUMERIC) ==>> to identify the generic sql type as NUMERIC
+    and set() methods to assign values to parameters (setInt()...) ==>>  Ex : cst1.setInt(2,6)
     And we use execute() method to get result for the specific values. ==>> "cst1.execute();"
 
 
