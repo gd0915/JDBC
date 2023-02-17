@@ -15,6 +15,7 @@ public class ExecuteUpdate01 {
         ResultSet resultSet1 = st.executeQuery(sql2);
         while(resultSet1.next()){
             System.out.println(resultSet1.getInt("company_id") + "--" + resultSet1.getString("company") + "--" + resultSet1.getInt("number_of_employees"));
+            //System.out.println(resultSet1.getInt(1) + "--" + resultSet1.getString(2) + "--" + resultSet1.getInt(3));
         }
 
         con.close();

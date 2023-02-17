@@ -1,23 +1,23 @@
-JDBC is an API that can access any kind of tabular data in a relational database. It is an connectivity tool.
+***JDBC is an API that can access any kind of tabular data in a relational database. It is an connectivity tool.
 
-With the help of JDBC, we can :
+***With the help of JDBC, we can :
  * Connect to a data source(database)
  * Send queries and update statements to the database
  * Process the results received from database
 
-How to connect Database?
+***How to connect Database?
 With the DriverManager class ==>> DriverManager.getConnection(host url, username, password) ==>> return Connection
 
-How to send queries?
+***How to send queries?
 We can send queries written in structured query language (SQL) and process the results.
 From the connection we created, first we create statement and with the help of this statement we send queries to database.
 statement.executeQuery("sql query");
 
-statement.executeQuery returns a ResultSet object. In this ResultSet object we can access the data through 'cursor'.
-Cursor is a pointer,and points to one row of data in the ResultSEt object.
+***statement.executeQuery returns a ResultSet object. In this ResultSet object we can access the data through 'cursor'.
+Cursor is a pointer,and points to one row of data in the ResultSet object.
 For the first time, cursor is positioned before the first row. We need to use next() method to reach the first row.
 
-In my framework, I added postgresql 42.5.1 version dependency as a jar file.(I can also add it as dependency from Maven)
+***In my framework, I added postgresql 42.5.1 version dependency as a jar file.(I can also add it as dependency from Maven)
 
 *** STEPS TO EXECUTE QUERY THROUGH JDBC ***
  1. Step: Registration to the driver
@@ -30,14 +30,25 @@ In my framework, I added postgresql 42.5.1 version dependency as a jar file.(I c
  4. Step: Execute the query
     String sql1 = "CREATE TABLE workers(worker_id VARCHAR(50), worker_name VARCHAR(20), worker_salary INT )";
     st.execute(sql1);
-    Note : execute() method can be used in DDL(Table creation, drop table, alter table) and in DQL(Select)
+    Note : execute() method returns boolean
+            It can be used in DDL(Table creation, drop table, alter table) and in DQL(Select)
             1)If you use execute() method in DDL you will get false everytime.
             2)If you use execute() method in DQL you will get false or true
               When you use execute() method in DQL, if you get ResultSet Object as return you will get true otherwise you will get false.
  5. Step: Close the connection and statement
     con.close();
     st.close();
+ 6. To see the records we use "executeQuery()".
+    It returns ResultSet object
+      ResultSet resultSet = st.executeQuery(sqlQueryInString);
+    And use while loop to navigate forward next rows
+      while(resultSet.next()) {
+           System.out.println(resultSet.getString("column_name")); //We can use column name or column index (1) as well
+      }
 
+    # Column index starts from "1" (index 0 is the headers, not the exact data)
+
+ 7. If we update a data in database, then we do not use 'statement.executeQuery() method', so we use 'statement.executeUpdate()'' method
 
 
 

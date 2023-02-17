@@ -34,8 +34,12 @@ public class Execute01 {
         System.out.println(sqlResult);
 
         //3. Example: Drop the table
-        String sql3 = "DROP TABLE workers";
-        st.execute(sql3);
+        String sql3 = "SELECT * FROM workers";
+        boolean sqlResult1 = st.execute(sql3);
+        System.out.println(sqlResult1);
+
+        String sql4 = "DROP TABLE workers";
+        st.execute(sql4);
 
         //5. Step: Close the connection and statement
         con.close();

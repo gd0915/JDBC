@@ -24,11 +24,11 @@ public class ExecuteQuery01 {
             System.out.println(resultSet1.getString("country_name")); //We can use column name or column index (1) as well
         }
 
-        //2.Example:
+        //2.Example: Select the country_id and country_name whose region_id's are greater than 2
         String sql2 = "SELECT country_name, country_id FROM countries WHERE region_id>2";
         ResultSet resultSet2 = st.executeQuery(sql2);
         while(resultSet2.next()){
-            System.out.println(resultSet2.getString("country_name") + "->" + resultSet2.getString( "country_id"));
+            System.out.println(resultSet2.getString("country_name") + " -> " + resultSet2.getString( "country_id"));
         }
 
         //3.Example: Select all columns whose number_of_employees is the lowest from companies table
@@ -39,10 +39,8 @@ public class ExecuteQuery01 {
             System.out.println(resultSet3.getInt(1) +" "+ resultSet3.getString(2) +" "+ resultSet3.getInt(3));
         }
 
-
         con.close();
         st.close();
-
 
     }
 }
