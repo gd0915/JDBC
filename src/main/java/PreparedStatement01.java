@@ -13,8 +13,8 @@ public class PreparedStatement01 {
         //2.Step: Create Prepared Statement Object
         PreparedStatement pst1 = con.prepareStatement(sql1);
 
-        //3.Step: Assigning Values by using 'set'
-        pst1.setInt(1, 19999);
+        //3.Step: Assigning Values by using 'setInt(), setString()...' methods
+        pst1.setInt(1, 29999);
         pst1.setString(2, "IBM");
 
         //4.Execute the query
@@ -29,7 +29,7 @@ public class PreparedStatement01 {
         }
 
         //2.Example: Update the number of employees to 5555 if the company name is GOOGLE by using prepared statement
-        pst1.setInt(1, 15555);
+        pst1.setInt(1, 25555);
         pst1.setString(2, "GOOGLE");
 
         int numOfRecordsUpdated2 = pst1.executeUpdate();

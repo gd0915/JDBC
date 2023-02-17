@@ -49,11 +49,26 @@ For the first time, cursor is positioned before the first row. We need to use ne
     # Column index starts from "1" (index 0 is the headers, not the exact data)
 
  7. If we update a data in database, then we do not use 'statement.executeQuery() method', so we use 'statement.executeUpdate()'' method
+    executeUpdate() method returns  ==>> int (How many rows are updated)
 
+    To check if the data is updated or not, execute query 'Select * From Table_name' and using executeQuery() method get the ResultSet obj
+    and get and read the data from database
 
+ 8. Prepared Statement :
+    A prepared statement is a feature used to execute the same SQL statement repeatedly with different data.
+    Prepared statements basically work like this:
+    Prepare: First create a SQL statement template and parameterize the data using "?".
+    Before send the sql query to the database assign values to these parameters using setInt(), setString()... methods.
+    Finally execute the query.
+    Do the same operation whenever want to send the same statement with different data.
+    No need to send the whole query every time, send only the parameters each time.
 
-
-
+ 9. How do you call stored procedures in JDBC Application? => Callable Statement :
+    We can create an object of the CallableStatement (interface) using the prepareCall() method of the Connection interface.
+    This method accepts a string variable representing a query to call the stored procedure. It returns a CallableStatement object.
+         ==>> "CallableStatement cst1 = con.prepareCall("{? = call additionF(?, ?) }");"
+    We use set() methods to assign values to parameters (setInt()...)
+    And we use execute() method to get result for the specific values. ==>> "cst1.execute();"
 
 
 

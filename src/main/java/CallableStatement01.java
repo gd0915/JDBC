@@ -26,9 +26,9 @@ public class CallableStatement01 {
         cst1.execute();
 
         //6th Step: To see the results on console use "sout"
-        System.out.println(cst1.getObject(1));
+        System.out.println(cst1.getObject(1)); // 1=>first row
 
-        //2.Example: Create a function which uses 2 parameters and return the sum of the parameters
+        //2.Example: Create a function which calculates the volume of cone
         //1st Step: Type code to create function
         String sql2 = "CREATE OR REPLACE FUNCTION volumeOfConeF(r NUMERIC, h NUMERIC) RETURNS NUMERIC LANGUAGE plpgsql AS $$ BEGIN RETURN 3.14*r*r*h/3; END $$";
 
